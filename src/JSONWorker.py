@@ -15,6 +15,7 @@ class BaseJSONSaver(ABC):
 
     @abstractmethod
     def del_vacancy(self, vacancy):
+        '''Заглушка для удаления вакансии из файла'''
         pass
 
     @abstractmethod
@@ -40,13 +41,32 @@ class JSONWorker(BaseJSONSaver):
         with open(self.file_path, 'a', encoding='utf-8') as f:
             json.dump([hh_vacancies], f, ensure_ascii=False, indent=2)
 
-    def filter_vacancies(self, filter_city):
+    @staticmethod
+    def filter_vacancies(filter_city, file_name__='hh_vacancies.json'):
         """Фильтрует список вакансий по городу"""
+    user_list = []
+    with open('file_name__', 'r', encoding='utf=8') as f:
+        text = json.load(f)
+    for i in text:
+        if filter_city in i['area']['name']:
+            user_list.append(i)
+    # for vacs in user_list:
+    #     for k, v in vacs.items():
+    #         print(f'{k}:{v}')
+        return user_list
 
-        return
-
+    # @staticmethod
+    # def sort_by_salary(n, file):
+    #     with open(file, 'r', encoding='utf=8') as f:
+    #         text = json.load(f)
+    #         sorted_list = sorted(text, key=lambda x: x['Зарплата'], reverse=True)
+    #         for i in sorted_list[0:n]:
+    #             for k, v in i.items():
+    #                 print(f'{k}:{v}')
+    #             print()
 
 
     def del_vacancy(self, vacancy):
+        '''Заглушка для удаления вакансии из файла'''
         pass
 

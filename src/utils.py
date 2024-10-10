@@ -1,3 +1,8 @@
+def filter_vacancies(vacancies, ключевые_слова):
+    return [вакансия for вакансия in vacancies if
+            any(ключ.lower() in вакансия['description'].lower() for ключ in ключевые_слова)]
+
+
 
 def sort_vacancies(vacancies):
     """
