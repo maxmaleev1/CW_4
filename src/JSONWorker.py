@@ -36,9 +36,9 @@ class JSONWorker(BaseJSONSaver):
     #     """Принимает вакансию, преобразует ее в словарь и дописывает в имеющийся файл ('hh_vacancies.json')"""
     #     json.dump([vacancy], 'hh_vacancies.json')
 
-    def add_vacancies(self, instances_vacancy):
+    def add_vacancies(self, hh_vacancies):
         with open(self.file_path, 'a', encoding='utf-8') as f:
-            json.dump([instances_vacancy], f, ensure_ascii=False, indent=2)
+            json.dump([hh_vacancies], f, ensure_ascii=False, indent=2)
 
     def filter_vacancies(self, filter_city):
         """Фильтрует список вакансий по городу"""

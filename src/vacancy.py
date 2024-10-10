@@ -1,5 +1,5 @@
 class Vacancy:
-    # __slots__= ( title, alternate_url, name, salary)
+    __slots__ = ('title', 'alternate_url', 'name', 'salary')
     def __init__(self, title, alternate_url, name, salary):
         self.title = title
         self.alternate_url = alternate_url

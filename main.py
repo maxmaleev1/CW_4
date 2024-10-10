@@ -10,17 +10,17 @@ def user_interaction():
     # filtered_vacancies = filter_city(vacancies_list, filter_words)
     # # top_n = int(input("Введите количество вакансий для вывода в топ по зп: "))
     # top_n = 100
-    # Создание экземпляра класса для работы с API сайтов с вакансиями:
-    hh_api = HHAPI()
-    # Получение вакансий с hh.ru в формате JSON:
-    hh_vacancies = hh_api.get_vacancies__(keyword_user)
+    # ПОЛУЧАЕМ ВАКАНСИИ С API И ЗАПИСЫВАЕМ В 'hh_vacancies.json':
+    JSONWorker.add_vacancies(HHAPI.get_vacancies__(keyword_user))
+
+
     # инициализируем класс JSONWorker:
     # json_worker = JSONWorker('hh_vacancies.json')
     # Преобразование набора данных из JSON в список объектов:
-    instances_vacancy = Vacancy.create_vacancies(hh_vacancies)
+    # instances_vacancy = Vacancy.create_vacancies(hh_vacancies)
     # print(instances_vacancy)
-    vacancies_list = JSONWorker.add_vacancies(instances_vacancy)
-    print(vacancies_list)
+    # vacancies_list = JSONWorker.add_vacancies(instances_vacancy)
+    # print(vacancies_list)
     # if hh_vacancies:
     #     vacancies_list = []
     #     for v in hh_vacancies:
@@ -45,4 +45,4 @@ if __name__ == '__main__':
     # hh_vacancies = hh_api.get_vacancies(keyword_user)
     # """ПОЛУЧАЕМ СПИСОК СЛОВАРЕЙ С ВАКАНСИЯМИ. ЭТО НЕ ФАЙЛ"""
     # json_worker = JSONWorker('hh_vacancies.json')
-    # json_worker.add_vacancies(hh_vacancies)
+    #
