@@ -1,5 +1,5 @@
 class Vacancy:
-    __slots__ = ('title', 'alternate_url', 'name', 'salary')
+    __slots__ = ('title', 'alternate_url', 'name', 'salary', 'salary_from', 'salary_to')
     def __init__(self, title, alternate_url, name, salary):
         self.title = title
         self.alternate_url = alternate_url
@@ -8,6 +8,7 @@ class Vacancy:
         self.validate__()
 
     def validate__(self):
+        """Валидация отображения ЗП по признаку отсутствия информации или цифр в графе ЗП от или до"""
         if not self.salary:
             self.salary_from = 0
             self.salary_to = 0
@@ -26,6 +27,7 @@ class Vacancy:
 
     @classmethod
     def create_vacancies(cls, hh_vacancies):
+        """Преобразование словарей из json файла в экземпляры класса Vacancy"""
         instances_vacancy = []
         for vacancies_info in hh_vacancies:
             title = vacancies_info['name']
@@ -36,16 +38,10 @@ class Vacancy:
             instances_vacancy.append(vacancy)
         return instances_vacancy
 
-
     def __lt__(self, other):
-        if self.salary_from:
-            if self.salary_from < other.salary_from:
-                return True
-            else:
-                return False
-        else:
-            if other.salary_from:
-                return False
+        """Сравнение экземпляров класса Vacancy по ЗП"""
+        return self.salary_from < other.salary_from
 
     def __str__(self):
-        return f'{self.title}: ЗП от {self.salary_from} до {self.salary_to}- {self.alternate_url}'
+        """Вывод объекта класса Vacanсy для пользователя"""
+        return f'{self.title}, город {self.name}, ЗП от {self.salary_from} до {self.salary_to}, ссылка: {self.alternate_url}'

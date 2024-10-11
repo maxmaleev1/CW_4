@@ -1,17 +1,12 @@
 import pytest
 from src.api import HHAPI
 
-def test_get_vacancies__():
-    HHAPI.get_vacancies__(self, 'слесарь'):
-    assert response.json()["items"]
 
-    pass
+@pytest.fixture
+def hh_api():
+    return HHAPI()
 
 
-# @pytest.fixture
-# def example():
-#     return HHAPI()
-#
-#
-# def test_get_vacancies__(example):
-#     for x in example.get_vacancies__(self, 'слесарь')
+def test_get_vacancies__(hh_api):
+    data = hh_api.get_vacancies__("слесарь")
+    assert len(data) != 0
